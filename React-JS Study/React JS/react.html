@@ -17,9 +17,11 @@
     //태그 속성 영역에 event listener (ex. onclick...)을 넣을 수 있음
     const h3 = React.createElement("h3", {
       onMouseEnter: () => console.log("yee"),
+      key: '1'
     }, "Hello I'm a h3");
     const btn = React.createElement("button", {
       onClick: () => console.log("i'm clicked"),
+      key: '2'
     }, "Click Me");
 
     //배열([])을 사용해 원하는 순서대로 태그 요소 넣을 수 있음. 여기서 div가 span과 button을 wrap하는 역할을 함
