@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React 2 - JSX를 이용한 React</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root = document.getElementById("root");
+
+    /*
+    JSX는 JS를 확장한(extension) 문법으로
+    그냥 쓰면 브라우저에서 인식을 못함. 이를 인식하게 하려면 Babel을 설치하고 script에 type을 text/babel로 변경해줘야함
+    */
+    
+    //const 변수명 = ( //html 태그 작성하듯 작성 );
+    /*
+    const Title = (
+      <h3 id="title" onClick={() => console.log("mouse enter")} key="0">
+        Hello I'm a title.
+      </h3>
+    )
+    const btn = (
+      <button style={{background: "tomato"}} onClick={() => console.log("i'm clicked")} key="1">Click Me</button>
+    )
+    */
+
+    // const 변수명 = () => ( 내용 ) : arrow function === function 함수명() { return (내용) }
+    const Title = () => (
+      <h3 id="title" onClick={() => console.log("mouse enter")} key="0">
+        Hello I'm a title.
+      </h3>
+    )
+    function Btn() {
+      return (
+        <button style={{background: "tomato"}} onClick={() => console.log("i'm clicked")} key="1">Click Me</button>
+      )
+    }
+
+    //title과 btn을 담기 위해서는 title, btn을 function 형태로 만들어줘야함. 그리고 태그의 변수명은 대문자로 시작해야함! 그렇지않으면 변수명이 아닌 태그로 인식할 가능성이 높아짐
+    const Container = () => (
+      <div>
+        <Title />
+        <Btn /> 
+      </div>
+    )
+    
+    //ReactDOM.render(Container, root);
+    ReactDOM.render(<Container />, root);
+  </script>
+</body>
+</html>
