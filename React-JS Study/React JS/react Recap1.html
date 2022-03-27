@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Recap 1</title>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    #root div {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgb(0, 255, 128);
+      padding: 120px 0;
+      text-align: center;
+    }
+    #root div:before,
+    #root div:after {
+      content: '';
+      position: absolute;
+    }
+    #root div:before {
+      width: 450px;
+      height: 450px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 3px solid #000;
+    }
+    #root div:after {
+      width: 50px;
+      height: 50px;
+      background-color: #000;
+      top: -80px;
+      right: -60px;
+    }
+    p {
+      font-size: 60px;
+    }
+    button {
+      display: inline-block;
+      width: 200px;
+      height: 50px;
+      border-radius: 50%;
+      background: black;
+      border: none;
+      color: #fff;
+      font-size: 20px;
+      position: relative;
+      cursor: pointer;
+      transition: 0.35s;
+    }
+    button:before {
+      content: '';
+      width: 85%;
+      height: 65%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      border: 2px solid #fff;
+    }
+    button:hover {
+      background-color: #fff;
+      color: #000;
+      transform: rotateX(360deg);
+    }
+    button:hover:before {
+      border-color: #000;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root = document.getElementById("root");
+    function Like() {
+      const [counter, refresh] = React.useState(0);
+      const clickEvent = () => {
+        refresh(counter + 1);
+      }
+      return (
+        <div>
+          <p>
+            <i className = "xi-heart-o"></i> {counter}
+          </p>
+          <button onClick = {clickEvent}>Click</button>  
+        </div>
+      ) 
+    }
+    ReactDOM.render(<Like />, root);
+  </script>
+</body>
+</html>
