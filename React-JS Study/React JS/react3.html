@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>React 2 - JSX를 이용한 React</title>
+  <title>React 3 - 변경된 값의 데이터 담기</title>
 </head>
 <body>
   <div id="root"></div>
@@ -13,53 +13,47 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
     const root = document.getElementById("root");
-
     /*
-    JSX는 JS를 확장한(extension) 문법으로
-    그냥 쓰면 브라우저에서 인식을 못함. 이를 인식하게 하려면 Babel을 설치하고 script에 type을 text/babel로 변경해줘야함
-    */
-    
-    //const 변수명 = ( //html 태그 작성하듯 작성 );
-    /*
-    const Title = (
-      <h3 id="title" onClick={() => console.log("mouse enter")} key="0">
-        Hello I'm a title.
-      </h3>
-    )
-    const btn = (
-      <button style={{background: "tomato"}} onClick={() => console.log("i'm clicked")} key="1">Click Me</button>
-    )
-    */
-
-    // const 변수명 = () => ( 내용 ) : arrow function === function 함수명() { return (내용) }
-    const Title = () => (
-      <h3 id="title" onClick={() => console.log("mouse enter")} key="0">
-        Hello I'm a title.
-      </h3>
-    )
-    function Btn() {
-      return (
-        <button style={{background: "tomato"}} onClick={() => console.log("i'm clicked")} key="1">Click Me</button>
-      )
+    let counter = 0;
+    function countUp() {
+      counter = counter + 1;
+      render(); //최초 렌더 후 다시 렌더를 해주기 위함. 이를 해주지 않으면 button을 눌러도 화면에 있는 counter 값이 변하지 않음(콘솔에서는 변하지만 화면에는 출력되지 X)
+    }
+    function render() {
+      ReactDOM.render(<Container />, root);
     }
 
-    //title과 btn을 담기 위해서는 title, btn을 function 형태로 만들어줘야함. 그리고 태그의 변수명은 대문자로 시작해야함! 그렇지않으면 변수명이 아닌 태그로 인식할 가능성이 높아짐.
+    //jsx에서 값에 변수 연결할 때는 {}만 사용하면 됨.
     const Container = () => (
       <div>
-        <Title />
-        <Btn /> 
+        <span>Total: {counter}</span>
+        <button onClick={countUp}>Click Me</button>  
       </div>
-    )
-    
-    //ReactDOM.render(Container, root);
-    ReactDOM.render(<Container />, root);
-
-    /*------------------------------------------*/
-    /*
-    git fetch 업데이트용 문구.
-    fetch 어렵네요. git이 어려운 것일지도 산책가야하는데 git때문에 점점 산책갈 시간이...
-    현재시간은 10시 21분
+    );
+    render();
     */
+    
+    function Container() {
+      //React.useState()는 default로 [undefined(데이터 값), f(함수)]를 가짐. 여기서 undefined에 값을 부여할 수 있음. undefined는 초기값이고 f는 초기값을 바꾸는 함수를 가리킴
+      /*
+      const data = React.useState(0);
+      const counter = data[0];
+      const modifier = data[1];
+      */
+      const [counter, setCounter] = React.useState(0); //const [변수명, 변수명] = [값, 값]
+      const onClick = () => {
+        setCounter(counter + 1); //setCounter의 역할은 ui를 바꿔주는 것
+      }
+      return (
+        <div>
+          <span>Total Clicks: {counter}</span>
+          <button onClick = {onClick}>Click Me</button>
+        </div>
+      )
+    }
+    ReactDOM.render(<Container />, root)
+
+
   </script>
 </body>
 </html>
