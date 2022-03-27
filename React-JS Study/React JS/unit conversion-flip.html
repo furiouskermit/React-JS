@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit Conversion-flip</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root = document.getElementById("root");
+    function Converter() {
+      const [amount, setAmount] = React.useState();
+      const [flipped, setFlipped] = React.useState(false); //여기서 flipped는 true, false인 데이터
+      const onChange = (event) => {
+        setAmount(event.target.value); 
+      };
+      const reset = () => {
+        setAmount(0);
+      }
+      //onFlip이 true라면 false를 반환. false면 true를 반환
+      const onFlip = () => {
+        reset();
+        setFlipped((current) => !current);
+      } //현재값((current)의 값)을 받아 이를 뒤집겠다는 뜻(!current)
+      return (
+        <div>
+          <h1>Super Converter</h1>
+          <div>
+            <label htmlFor="minutes">Minutes</label>
+             <input id="minutes" value={flipped ? amount * 60:amount} type="number" placeholder="Minutes" onChange={onChange} disabled={flipped === true} />
+          </div>
+          <div>
+            <label htmlFor="hours">Hours</label>
+          <input id="hours" onChange = {onChange} value={flipped ? amount: amount / 60 /* flipped가 true일 때 amount 값을 보여줌. 그렇지 않으면 amount/60 값을 보여줌 */} type="number" placeholder="Hours" disabled={flipped === false /* JSX의 조건문 형태로 flipped가 false일 때 disabled가 true */ } />
+          </div>
+          <button onClick= {reset}>Reset</button>
+          <button onClick= {onFlip}>Flipped</button>
+        </div>
+      )
+    }
+    ReactDOM.render(<Converter />, root);
+  </script>
+</body>
+</html>

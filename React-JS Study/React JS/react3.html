@@ -40,6 +40,7 @@
       const counter = data[0];
       const modifier = data[1];
       */
+     //useState()는 기본적으로 array 값임
       const [counter, setCounter] = React.useState(0); //const [변수명, 변수명] = [값, 값]
       const onClick = () => {
         setCounter(counter + 1); //setCounter의 역할은 ui를 바꿔주는 것

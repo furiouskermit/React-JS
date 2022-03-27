@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit Conversion</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root = document.getElementById("root");
+    function Converter() {
+      const [minutes, setMinutes] = React.useState();
+      const onChange = (event) => {
+        //console.log(event.target.value); //여기서 target은 변경된 input을 가리킴
+        setMinutes(event.target.value); 
+      };
+      const reset = () => {
+        setMinutes(0);
+      }
+      return (
+        <div>
+          <h1>Super Converter</h1>
+          <div>
+            <label htmlFor="minutes">Minutes</label>
+             <input id="minutes" value={minutes} type="number" placeholder="Minutes" onChange={onChange} />
+          </div>
+          <div>
+            <label htmlFor="hours">Hours</label>
+            <input id="hours" value={minutes / 60} type="number" placeholder="Hours" disabled />
+          </div>
+          <button onClick= {reset}>Reset Everything</button>
+        </div>
+      )
+    }
+    ReactDOM.render(<Converter />, root);
+  </script>
+</body>
+</html>
