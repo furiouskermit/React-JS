@@ -50,28 +50,56 @@
     }
 
     function MToCm() {
+      const [length2, setLength2] = React.useState();
+      const [flip2, setFlip2] = React.useState(false);
+      const onChange2 = (event) => {
+        setLength2(event.target.value);
+      }
+      const resetCm = () => {
+        setLength2(0);
+      }
+      const onFlip2 = () => {
+        resetCm();
+        setFlip2((current) => !current);
+      }
 
       return (
         <div>
           <h3>Meter To Cm Converter</h3>
           <div>
             <label htmlFor="meter">Meter</label>
-            <input type="number" id="meter" placeholder="Meter" />  
+            <input type="number" id="meter" placeholder="Meter" value={flip2 ? length2 / 100 : length2} onChange={onChange2} disabled={flip2 === true} />  
           </div>
           <div>
             <label htmlFor="cm">Cm</label>
-            <input type="number" id="cm" placeholder="Cm" />  
-          </div>  
+            <input type="number" id="cm" placeholder="Cm" value={flip2 ? length2 : length2 * 100} onChange={onChange2} disabled={flip2 === false} />  
+          </div>
+          <button className="btn_reset" onClick={resetCm}>Reset</button>  
+          <button className="btn_flip" onClick={onFlip2}>Flip</button>  
         </div>
       )
     }
 
     //wrap
     function Wrap() {
+      const [index, setIndex] = React.useState();
+      const onSelect = () => {
+        setIndex(event.target.value);
+        console.log(event.target.value)
+      }
       return (
         <div>
-          <KgToG />
-          <MToCm />
+          <select onClick={onSelect}>
+            <option value="0">Choose the converter</option>
+            <option value="1">Kg To g</option>
+            <option value="2">M To Cm</option>
+          </select>
+          {
+            index === "1" ? <KgToG /> : null //여기에는 ;는 쓰면 오류남
+          }
+          {
+            index === "2" ? <MToCm /> : null
+          }
         </div>
       )
     }
