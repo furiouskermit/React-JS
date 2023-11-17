@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React 3 - 변경된 값의 데이터 담기</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root = document.getElementById("root");
+    /*
+    let counter = 0;
+    function countUp() {
+      counter = counter + 1;
+      render(); //최초 렌더 후 다시 렌더를 해주기 위함. 이를 해주지 않으면 button을 눌러도 화면에 있는 counter 값이 변하지 않음(콘솔에서는 변하지만 화면에는 출력되지 X)
+    }
+    function render() {
+      ReactDOM.render(<Container />, root);
+    }
+
+    //jsx에서 값에 변수 연결할 때는 {}만 사용하면 됨.
+    const Container = () => (
+      <div>
+        <span>Total: {counter}</span>
+        <button onClick={countUp}>Click Me</button>  
+      </div>
+    );
+    render();
+    */
+    
+    function Container() {
+      //React.useState()는 default로 [undefined(데이터 값), f(함수)]를 가짐. 여기서 undefined에 값을 부여할 수 있음. undefined는 초기값이고 f는 초기값을 바꾸는 함수를 가리킴
+      /*
+      const data = React.useState(0);
+      const counter = data[0];
+      const modifier = data[1];
+      */
+     //useState()는 기본적으로 array 값임
+      const [counter, setCounter] = React.useState(0); //const [변수명, 변수명] = [값, 값]
+      const onClick = () => {
+        setCounter(counter + 1); //setCounter의 역할은 ui를 바꿔주는 것
+      }
+      return (
+        <div>
+          <span>Total Clicks: {counter}</span>
+          <button onClick = {onClick}>Click Me</button>
+        </div>
+      )
+    }
+    ReactDOM.render(<Container />, root)
+
+
+  </script>
+</body>
+</html>

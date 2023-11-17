@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit Conversion2</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root = document.getElementById("root");
+    function MinutesToHours() {
+      const [amount, setAmount] = React.useState();
+      const [flipped, setFlipped] = React.useState(false);
+      const onChange = (event) => {
+        setAmount(event.target.value); 
+      };
+      const reset = () => {
+        setAmount(0);
+      }
+      const onFlip = () => {
+        reset();
+        setFlipped((current) => !current);
+      }
+      return (
+        <div>
+          <div>
+            <label htmlFor="minutes">Minutes</label>
+             <input id="minutes" value={flipped ? amount * 60:amount} type="number" placeholder="Minutes" onChange={onChange} disabled={flipped === true} />
+          </div>
+          <div>
+            <label htmlFor="hours">Hours</label>
+          <input id="hours" onChange = {onChange} value={flipped ? amount: amount / 60} type="number" placeholder="Hours" disabled={flipped === false} />
+          </div>
+          <button onClick= {reset}>Reset</button>
+          <button onClick= {onFlip}>Flipped</button>
+        </div>
+      )
+    }
+    function KmToMeter() {
+      const [length, setLength] = React.useState();
+      const [flip, setFlip] = React.useState(false);
+      const onChangeLength = (event) => {
+        setLength(event.target.value);
+      }
+      const onResetLength = () => {
+        setLength(0);
+      }
+      const onFlipLength = () => {
+        onResetLength();
+        setFlip((current) => !current);
+      }
+      return (
+        <div>
+          <h3>Km To Meters</h3>
+          <div>
+            <label htmlFor="km">Km</label>
+            <input type="number" id="km" value={flip ? length / 1000 : length} onChange={onChangeLength} placeholder="Km" disabled={flip === true} />
+          </div>  
+          <div>
+            <label htmlFor="meters">Meters</label>
+            <input type="number" id="meters" value={flip ? length : length * 1000} onChange={onChangeLength} placeholder="Meters" disabled={flip === false} />
+          </div>
+          <button onClick={onResetLength}>Reset</button>
+          <button onClick={onFlipLength}>Flip</button>
+        </div>
+      )
+    }
+    function Converter() {
+      const [index, setIndex] = React.useState("0");
+      const onSelect = (event) => {
+        setIndex(event.target.value);
+      }
+      return (
+        <div>
+          <h1>Super Converter</h1>
+          <select onChange = {onSelect} value={index}>
+            <option value="0">Minutes & Hours</option>  
+            <option value="1">Km & Miles</option>  
+          </select>
+          <hr />
+          {
+            // {} 이렇게 써야 JS로 인식
+
+            //if index === 0
+            index === "0" ? <MinutesToHours /> : null
+          }
+          {
+            index === "1" ? <KmToMeter /> : null
+          }
+        </div>
+      )
+    }
+    ReactDOM.render(<Converter />, root);
+  </script>
+</body>
+</html>

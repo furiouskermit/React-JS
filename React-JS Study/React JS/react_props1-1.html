@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React - Props 1-1</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <!-- ▼ React JS에게 props type을 알려주는 역할-->
+  <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script> 
+  <script type="text/babel">
+    const root = document.getElementById("root");
+    function Btn({ dataText, onClick, fontSize = 14 }) { //JS - 인자에 default값을 줄 수 있음. fontSize 값이 없다면 디폴트로 14px 사이즈를 하겠다는 뜻
+      console.log(dataText, "was changed");
+      return (
+        <button style={{
+          backgroundColor: "tomato",
+          color: "white",
+          padding: "10px 20px",
+          borderRadius: "10px",
+          border: "none",
+          fontSize: fontSize
+        }} onClick={onClick} >{dataText}</button>
+      )
+    }
+
+    const MemorizedBtn = React.memo(Btn); //Btn 요소를 기억
+    Btn.propTypes = {
+      //Btn에서 prop의 type이 무엇인지 정의(https://unpkg.com/prop-types@15.7.2/prop-types.js 에 들어가서 확인 가능(PropTypes.~ ))
+      dataText: PropTypes.string.isRequired, //.isRequired는 필수로 있어야한다는 뜻
+      fontSize: PropTypes.number //만약 여기에 어긋나는 type의 값을 주면 콘솔에서 에러 문구 표시해줌
+    }
+    function App() {
+      const [value, setValue] = React.useState("Save Changes");
+      const changeValue = () => setValue("Revert Changes");
+      //여기서 Btn의 onClick은 이벤트리스너(클릭 역할)가 아닌 props임. 이벤트리스너를 하려면 Btn()의 button 안에 onClick을 써야함 -> 부모요소에서 자식요소 태그 안에 넣는 속성들은 다 props임. 여기서(<Btn />)는 style을 써도 props로 인식됨. 이벤트기능을 원한다면 직접 자식요소의 함수 안 태그(button)에 넣어야함. 여기서 추가한 props는 기능을 하려면 반드시 위의 자식요소 인자에 넣어줘야함
+      return (
+        <div>
+          <MemorizedBtn dataText={value} onClick={changeValue} /> 
+          <MemorizedBtn dataText="Confirm" fontSize={18} />
+        </div>
+      )
+    }
+    ReactDOM.render(<App />, root);
+  </script>
+</body>
+</html>

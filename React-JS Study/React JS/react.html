@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React JS</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script>
+    const root = document.getElementById("root");
+
+    //태그 생성: React.createElement("태그", {태그 속성}/없을시 null, "태그에 들어갈 내용")
+    //태그 속성 영역에 event listener (ex. onclick...)을 넣을 수 있음
+    const h3 = React.createElement("h3", {
+      onMouseEnter: () => console.log("yee"),
+      key: '1'
+    }, "Hello I'm a h3");
+    const btn = React.createElement("button", {
+      onClick: () => console.log("i'm clicked"),
+      key: '2'
+    }, "Click Me");
+
+    //배열([])을 사용해 원하는 순서대로 태그 요소 넣을 수 있음. 여기서 div가 span과 button을 wrap하는 역할을 함
+    const container = React.createElement("div", null, [h3, btn]);
+
+    //ReactDOM에서 DOM은 대문자로 써줘야함
+    ReactDOM.render(container, root); //div#root 안에 container를 넣음
+  </script>
+</body>
+</html>

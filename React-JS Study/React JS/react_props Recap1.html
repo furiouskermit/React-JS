@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React - Props Recap1</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script> 
+  <script type="text/babel">
+    const root = document.getElementById("root");
+    
+    function TxtBtn({ text, btnWidth, btnHeight, btnColor, btnFz, btnBg, changeText }) {
+      return (
+        <button style={{
+          display: "block",
+          width: btnWidth,
+          height: btnHeight,
+          color: btnColor,
+          fontSize: btnFz,
+          background: btnBg,
+          border: "none",
+          cursor: "pointer"
+        }} onClick={changeText} >{text}</button>
+      )
+    }
+    TxtBtn.propTypes = {
+      text: PropTypes.string.isRequired,
+      btnWidth: PropTypes.number,
+      btnHeight: PropTypes.number,
+      btnColor: PropTypes.string,
+      btnFz: PropTypes.number,
+      btnBg: PropTypes.string
+    }
+    function Wrap() {
+      const [value, setValue] = React.useState("당신은 잘 오다");
+      const changeTxt = () => {
+        setValue("You're Welcome")
+      }
+      return (
+        <div>
+          <h1>당신은 잘 오다</h1>  
+          <TxtBtn text={value} btnWidth={250} btnHeight={90} btnColor={"red"} btnFz={24} btnBg={"teal"} changeText={changeTxt} />  
+          <TxtBtn text="유어웰컴" btnWidth={250} btnHeight={90} btnColor={"red"} btnFz={24} />  
+        </div>
+      )
+    }
+    ReactDOM.render(<Wrap />, root)
+  </script>
+</body>
+</html>
