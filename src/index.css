@@ -1,13 +1,58 @@
+/* ### Font ### */
+@font-face {
+  font-family: 'NEXON Lv2 Gothic';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv2 Gothic.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'MaplestoryOTFBold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ### Default CSS ### */
+:root {
+  --point: #FF9633;
+  --point-dark: #d86f0d;
+  --point-black: #000;
+  --default-font: 'NEXON Lv2 Gothic';
+  --point-font: 'MaplestoryOTFBold';
+}
+* {
+  box-sizing: border-box;
+}
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  padding: 0;
+  font-family: var(--default-font);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+a, input, select, button, textarea {
+  font-family: var(--default-font);
+}
+a, button {
+  transition: 0.2s;
+}
+a {
+  text-decoration: none;
+}
+input, select, button, textarea {
+  padding: 0;
+  outline: none;
+  border: none;
+}
+button {
+  background: transparent;
+}
+
+/* ### Custom Module CSS ### */
+.d-none {
+  display: none !important;
 }

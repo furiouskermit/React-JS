@@ -1,38 +1,93 @@
-.App {
+.wrap {
+  min-height: 100vh;
+  height: 100%;
+  background: url('./img/mp_pc.png') no-repeat center center;
+  background-size: cover;
+  color: #fff;
+}
+.inner {
+  
+}
+.content {
+  /* position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+  padding: calc(calc(100vh - 230px) / 2) 0;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* --- maplestory logo --- */
+.logo-name {
+  display: block;
+  font-family: var(--point-font);
+  font-size: 24px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* --- 채널 선택 --- */
+.recommend-server-box {
+  margin: 40px 0 0;
+}
+.recommend-server-box > span {
+  display: block;
+  margin: 0 0 15px;
+  font-size: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* 채널 선택 버튼 */
+.recommend-server-box .btn {
+  width: 200px;
+  height: 55px;
+  margin: 0 auto;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background: var(--point);
+  border-radius: 100px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+}
+.recommend-server-box .btn:hover {
+  background: var(--point-dark);
 }
 
-.App-link {
-  color: #61dafb;
+/* 채널 결과 */
+.server-result {
+  font-family: var(--point-font);
+  font-size: 50px;
+  color: var(--point);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* --- 다시 고르기 --- */
+.undo-box {
+  margin: 40px 0 0;
+}
+.undo-box .btn-undo {
+  background: transparent;
+  font-size: 14px;
+  color: #777;
+  cursor: pointer;
+}
+.undo-box .btn-undo:hover {
+  opacity: 0.5;
+}
+
+/* ### RESPONSIVE ### */
+@media (max-width: 768px) {
+  .wrap {
+    background-image: url(./img/mp_mobile.png);
   }
-  to {
-    transform: rotate(360deg);
+  .recommend-server-box > span {
+    font-size: 18px;
+  }
+  .recommend-server-box .btn {
+    width: 170px;
+    font-size: 14px;
+  }
+}
+@media (max-height: 230px) {
+  .content {
+    padding: 40px 0;
   }
 }
