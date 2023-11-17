@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/static/css/main.12152270.css",
-    "main.js": "/static/js/main.8f88dda2.js",
-    "static/js/787.28cb0dcd.chunk.js": "/static/js/787.28cb0dcd.chunk.js",
-    "static/media/remixicon.svg?t=1690730386070": "/static/media/remixicon.db77551b8efc76571c4f.svg",
-    "static/media/mp_mobile.png": "/static/media/mp_mobile.7e4d443695a4efccb17a.png",
-    "static/media/remixicon.eot?t=1690730386070": "/static/media/remixicon.53ec05edb4b6864b45b1.eot",
-    "static/media/remixicon.ttf?t=1690730386070": "/static/media/remixicon.4aa0fd158658e2a40e79.ttf",
-    "static/media/mp_pc.png": "/static/media/mp_pc.109744cb996d1e98bb42.png",
-    "static/media/remixicon.woff?t=1690730386070": "/static/media/remixicon.affd60ca37df38cfee4f.woff",
-    "static/media/remixicon.woff2?t=1690730386070": "/static/media/remixicon.821a773710130bcf4674.woff2",
-    "index.html": "/index.html",
-    "main.12152270.css.map": "/static/css/main.12152270.css.map",
-    "main.8f88dda2.js.map": "/static/js/main.8f88dda2.js.map",
-    "787.28cb0dcd.chunk.js.map": "/static/js/787.28cb0dcd.chunk.js.map"
+    "main.css": "/React-JS/static/css/main.5fe836f5.css",
+    "main.js": "/React-JS/static/js/main.d9087596.js",
+    "static/js/787.28cb0dcd.chunk.js": "/React-JS/static/js/787.28cb0dcd.chunk.js",
+    "static/media/remixicon.svg?t=1690730386070": "/React-JS/static/media/remixicon.db77551b8efc76571c4f.svg",
+    "static/media/mp_mobile.png": "/React-JS/static/media/mp_mobile.7e4d443695a4efccb17a.png",
+    "static/media/remixicon.eot?t=1690730386070": "/React-JS/static/media/remixicon.53ec05edb4b6864b45b1.eot",
+    "static/media/remixicon.ttf?t=1690730386070": "/React-JS/static/media/remixicon.4aa0fd158658e2a40e79.ttf",
+    "static/media/mp_pc.png": "/React-JS/static/media/mp_pc.109744cb996d1e98bb42.png",
+    "static/media/remixicon.woff?t=1690730386070": "/React-JS/static/media/remixicon.affd60ca37df38cfee4f.woff",
+    "static/media/remixicon.woff2?t=1690730386070": "/React-JS/static/media/remixicon.821a773710130bcf4674.woff2",
+    "index.html": "/React-JS/index.html",
+    "main.5fe836f5.css.map": "/React-JS/static/css/main.5fe836f5.css.map",
+    "main.d9087596.js.map": "/React-JS/static/js/main.d9087596.js.map",
+    "787.28cb0dcd.chunk.js.map": "/React-JS/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.12152270.css",
-    "static/js/main.8f88dda2.js"
+    "static/css/main.5fe836f5.css",
+    "static/js/main.d9087596.js"
   ]
 }
